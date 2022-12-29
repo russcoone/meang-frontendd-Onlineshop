@@ -1,0 +1,21 @@
+<div class="border-end" id="sidebar-wrapper">
+  <div class="sidebar-heading border-bottom">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active">
+      Viky Store
+    </a>
+  </div>
+  <div class="list-group list-group-flush">
+    <a
+      class="list-group-item list-group-item-action list-group-item p-3"
+      [routerLink]="['/admin']"
+      routerLinkActive="router-link-active"
+      ><i class="fa fa-columns" aria-hidden="true"></i> Dashboard</a
+    >
+    <a
+      class="list-group-item list-group-item-action list-group-item p-3"
+      [routerLink]="['/admin/users']"
+      routerLinkActive="router-link-active"
+      ><i class="fa fa-user" aria-hidden="true"></i> Users</a
+    >
+  </div>
+</div>
