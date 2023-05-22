@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { NavbarComponent } from '@shop-core/components/navbar/navbar.component';
 
 export const USER_FRAGMENT = gql`
   fragment UserObject on User {
