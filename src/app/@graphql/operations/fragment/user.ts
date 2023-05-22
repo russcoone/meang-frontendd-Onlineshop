@@ -1,4 +1,3 @@
-import { NavbarComponent } from '@shop-core/components/navbar/navbar.component';
 import gql from 'graphql-tag';
 
 export const USER_FRAGMENT = gql`
