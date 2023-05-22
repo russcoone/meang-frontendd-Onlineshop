@@ -1,6 +1,5 @@
 import { UsersService } from './../../../@core/services/users.service';
 import { AuthService } from './../../../@core/services/auth.service';
-import { ApiService } from './../../../@graphql/service/api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -15,9 +14,9 @@ export class HomeComponent implements OnInit {
     this.auth
       .login('abrahamcomservice@gmail.com', '12345')
       .subscribe((result) => {});
-    // this.usersApi.getUsers().subscribe((result) => {
-    //   console.log(result);
-    // });
+    this.usersApi.getUsers(2, 1).subscribe((result) => {
+      console.log(result);
+    });
     // this.auth.getMe().subscribe((result) => {
     //   console.log(result);
     // });
