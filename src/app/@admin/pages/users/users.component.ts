@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.context = {};
-    this.itemsPage = 10;
+    this.itemsPage = 15;
     this.resultData = {
       lisKey: 'users',
       definitionKey: 'users',

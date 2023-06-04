@@ -8,7 +8,7 @@ export function basicAlert(icon = TYPE_ALERT.SUCCESS, title: string = '') {
     position: 'center',
     showConfirmButton: false,
     toast: false,
-    timer: 6500,
+    timer: 3000,
     didOpen: () => {
       const content = Swal.getHtmlContainer();
       const $ = content.querySelector.bind(content);
