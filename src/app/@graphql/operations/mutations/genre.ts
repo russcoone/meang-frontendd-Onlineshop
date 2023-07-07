@@ -15,7 +15,7 @@ export const ADD_GENRE = gql`
 `;
 
 export const MODIFY_GENRE = gql`
-  mutation modificarGenro($id: ID!, $genre: String!) {
+  mutation modificarGenero($id: ID!, $genre: String!) {
     updateGenre(id: $id, genre: $genre) {
       status
       message
@@ -25,4 +25,13 @@ export const MODIFY_GENRE = gql`
     }
   }
   ${GENRE_FRAGMENT}
+`;
+
+export const BLOCK_GENRE = gql`
+  mutation bloquearGenero($id: ID!) {
+    blockGenre(id: $id) {
+      status
+      message
+    }
+  }
 `;

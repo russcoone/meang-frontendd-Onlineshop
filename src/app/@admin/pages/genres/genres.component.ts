@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IResultData } from '@core/interfaces/result-data.interface';
 import { ITableColumns } from '@core/interfaces/table-columns.interface';
 import { GENRE_LIST_QUERY } from '@graphql/operations/query/genre';
-import { formBasicDialog } from '@shared/alerts/alerts';
+import { formBasicDialog, optionsWithDetails } from '@shared/alerts/alerts';
 import { DocumentNode } from 'graphql';
 import { GenresService } from './genres.service';
 import { basicAlert } from '@shared/alerts/toasts';
@@ -46,19 +46,53 @@ export class GenresComponent implements OnInit {
     ];
   }
   async takeAction($event) {
-    console.log($event[0], $event[1]);
-
+    // coger la informacion para la acciones
     const action = $event[0];
     const genre = $event[1];
-    let defaultValue = '';
-    if (genre.name !== undefined && genre.name !== '') {
-      defaultValue = genre.name;
-    }
+
+    // cogemos el valorpor defecto
+    const defaultValue =
+      genre.name !== undefined && genre.name !== '' ? genre.name : '';
     const html = `<input id="name" value="${defaultValue}" class="swal2-input" required>`;
 
-    if (action === 'add') {
-      const result = await formBasicDialog('Añadir genero', html, 'name');
-      console.log(result);
+    // Teniedo en cuenta el caso ejecutar una acion
+    switch (action) {
+      case 'add':
+        // Añadir el item
+        this.addForm(html);
+        break;
+      case 'edit':
+        this.updateForm(html, genre);
+        break;
+      case 'info':
+        const result = await optionsWithDetails(
+          'Detalles',
+          `${genre.name} (${genre.slug})`,
+          350,
+          '<i class="fas fa-edit"></i>Editar',
+          '<i class="fas fa-lock"></i> Bloquear'
+        );
+        if (result) {
+          this.updateForm(html, genre);
+        } else if (result === false) {
+          this.blockForm(genre);
+        }
+        break;
+      case 'block':
+        this.blockForm(genre);
+        break;
+      default:
+        break;
+    }
+  }
+
+  private async addForm(html: string) {
+    const result = await formBasicDialog('Añadir genero', html, 'name');
+    console.log(result);
+    this.addGenre(result);
+  }
+  private addGenre(result) {
+    if (result.value) {
       this.service.add(result.value).subscribe((res: any) => {
         console.log(res);
         if (res.status) {
@@ -67,39 +101,47 @@ export class GenresComponent implements OnInit {
         }
         basicAlert(TYPE_ALERT.WARNING, res.message);
       });
-      // this.addGenre(result);
-      return;
     }
-    // if (action === 'edit') {
-    //   const result = await formBasicDialog('Modificar genero', html, 'name');
-    //   console.log(result);
-    // this.addGenre(result);
-    // this.updateGenre(genre.id, result);
-    // }
   }
-  // addGenre(result) {
-  //   if (result.value) {
-  //     this.service.add(result.value).subscribe((res: any) => {
-  //       console.log(res);
-  //       if (res.status) {
-  //         basicAlert(TYPE_ALERT.SUCCESS, res.message);
-  //         return;
-  //       }
-  //       basicAlert(TYPE_ALERT.WARNING, res.message);
-  //     });
-  //   }
-  // }
-  // updateGenre(id: string, result) {
-  //   console.log(id, result.value);
-  //   if (result.value) {
-  //     this.service.update(id, result.value).subscribe((res: any) => {
-  //       console.log(res);
-  //       if (res.status) {
-  //         basicAlert(TYPE_ALERT.SUCCESS, res.message);
-  //         return;
-  //       }
-  //       basicAlert(TYPE_ALERT.WARNING, res.message);
-  //     });
-  //   }
-  // }
+  private async updateForm(html: string, genre: any) {
+    const result = await formBasicDialog('Modificar genero', html, 'name');
+    console.log(result);
+    // this.addGenre(result);
+    this.updateGenre(genre.id, result);
+  }
+  private updateGenre(id: string, result) {
+    console.log(id, result.value);
+    if (result.value) {
+      this.service.update(id, result.value).subscribe((res: any) => {
+        console.log(res);
+        if (res.status) {
+          basicAlert(TYPE_ALERT.SUCCESS, res.message);
+          return;
+        }
+        basicAlert(TYPE_ALERT.WARNING, res.message);
+      });
+    }
+  }
+  private blockGenre(id: string) {
+    this.service.block(id).subscribe((res: any) => {
+      console.log(res);
+      if (res.status) {
+        basicAlert(TYPE_ALERT.SUCCESS, res.message);
+        return;
+      }
+      basicAlert(TYPE_ALERT.WARNING, res.message);
+    });
+  }
+  private async blockForm(genre: any) {
+    const result = await optionsWithDetails(
+      '¿Bloquear?',
+      `Si bloqueas el item seleccionado, no se mostrara en la lista `,
+      430,
+      'No, no Bloquear',
+      'Si Bloquear'
+    );
+    if (result === false) {
+      this.blockGenre(genre.id);
+    }
+  }
 }
