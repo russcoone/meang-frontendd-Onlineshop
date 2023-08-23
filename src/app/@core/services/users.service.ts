@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 import { USERS_LIST_QUERY } from '@graphql/operations/query/user';
 import { map } from 'rxjs/internal/operators/map';
 import { IRegisterForm } from '@core/interfaces/register.interface';
-import { REGISTER_USER } from '@graphql/operations/mutations/user';
+import { ACTIVE_USER, REGISTER_USER } from '@graphql/operations/mutations/user';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,26 @@ export class UsersService extends ApiService {
     }).pipe(
       map((result: any) => {
         return result.register;
+      })
+    );
+  }
+  active(token: string, birthday: string, password: string) {
+    const user = JSON.parse(atob(token.split('.')[1])).user;
+    return this.set(
+      ACTIVE_USER,
+      {
+        id: user.id,
+        birthday,
+        password,
+      },
+      {
+        headers: new HttpHeaders({
+          Authorization: token,
+        }),
+      }
+    ).pipe(
+      map((result: any) => {
+        return result.activeUserAction;
       })
     );
   }
