@@ -3,15 +3,15 @@
     <button
       class="navbar-toggler"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
+      data-toggle="collapse"
+      data-target="#navbarToggleExternalContent"
+      aria-controls="navbarToggleExternalContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a
@@ -30,7 +30,7 @@
           >
         </li>
       </ul>
-      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+      <div class="navbar-nav ms-auto mt-2 mt-lg-0 ">
         <li class="nav-item" *ngIf="access && role == 'ADMIN'">
           <a
             class="nav-link wi"
@@ -55,13 +55,13 @@
             >Registro</a
           >
         </li>
-        <li class="nav-item dropdown" *ngIf="access">
+        <li class="dropdown" *ngIf="access">
           <a
-            class="nav-link dropdown-toggle"
-            id="navbarDropdown"
+            class="btn btn-secondary dropdown-toggle"
+            id="dropdownMenuLink"
             href="#"
             role="button"
-            data-bs-toggle="dropdown"
+            data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
             >{{ userLabel }}</a
@@ -70,13 +70,13 @@
             class="dropdown-menu dropdown-menu-end"
             aria-labelledby="navbarDropdown"
           >
-            <a class="dropdown-item" href="#!">Perfil</a>
-            <a class="dropdown-item" href="#!">Configuracion</a>
+            <a class="dropdown-item sombra" href="#!">Perfil</a>
+            <a class="dropdown-item sombra" href="#!">Configuracion</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="logout()">Salir de la sesion</a>
+            <a class="dropdown-item sombra" (click)="logout()">Salir de la sesion</a>
           </div>
         </li>
-      </ul>
+      </div>
     </div>
   </div>
 </nav>
