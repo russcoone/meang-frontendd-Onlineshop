@@ -156,10 +156,10 @@ export class UsersComponent implements OnInit {
           // Especificar acción para enviar email de activación al usuario
           this.service
             .sendEmailActive(createUser.id, createUser.email)
-            .subscribe((emailRes: any) => {
+            .subscribe((resEmail: any) => {
               basicAlert(
-                emailRes.status ? TYPE_ALERT.SUCCESS : TYPE_ALERT.WARNING,
-                emailRes.message
+                resEmail.status ? TYPE_ALERT.SUCCESS : TYPE_ALERT.WARNING,
+                resEmail.message
               );
             });
           return;

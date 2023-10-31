@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row m-3">
     <div class="col-lg"></div>
     <div class="col-lg-6">
       <form (ngSubmit)="add()" #forma="ngForm">
@@ -80,7 +80,7 @@
         <label for="password"><b>Password</b></label>
         <input
           type="password"
-          placeholder="Introdusca si password"
+          placeholder="Introdusca su password"
           name="password"
           #password="ngModel"
           [(ngModel)]="register.password"

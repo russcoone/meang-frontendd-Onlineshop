@@ -1,8 +1,8 @@
 .custom-bg {
-  // background-color: #2b2f33;
+  background-color: #2b2f33;
   // background-color: #7e2af9;
   // background-color: #fc29dc;
-  background-color: #8a2be2;
+  // background-color: #8a2be2;
 }
 
 .dropdown-item {
@@ -11,3 +11,8 @@
 .wi {
   color: whitesmoke !important;
 }
+
+.sombra:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+

@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "meang-frontendd"
+    }
+  },
+  "defaultProject": "meang-frontendd",
+  "cli": {
+    "analytics": "367d93a2-3445-4307-9028-39725cb08ccd"
+  }
 }
