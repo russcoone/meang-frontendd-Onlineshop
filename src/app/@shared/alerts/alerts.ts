@@ -93,3 +93,19 @@ export async function optionsWithDetails(
     }
   });
 }
+
+export const loadDate = (title: string, html: string) => {
+  Swal.fire({
+    title,
+    html,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+    },
+  });
+};
+
+export const closeAlert = () => {
+  Swal.close();
+};

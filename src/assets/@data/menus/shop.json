@@ -1,0 +1,39 @@
+[
+  {
+    "url": "/",
+    "label": "Inicio",
+    "icon": ""
+  },
+  {
+    "url": "/tienda/platforms/tenis de mujer",
+    "label": "Tenis de Mujer",
+    "icon": ""
+  },
+  {
+    "url": "/tienda/platforms/tenis de hombre",
+    "label": "Tenis de Hombre",
+    "icon": ""
+  },
+  {
+    "url": "/tienda/platforms/tenis de niñas",
+    "label": "Tenis de Niñas",
+    "icon": ""
+  },
+  {
+    "url": "/tienda/platforms/tenis de niños",
+    "label": "Tenis de Niños",
+    "icon": ""
+  },
+
+  {
+    "url": "/tienda/promotions/offers",
+    "label": "En liquidacion",
+    "icon": ""
+  },
+  {
+    "url": "/contact",
+    "label": "Contacto",
+    "icon": ""
+  }
+
+]

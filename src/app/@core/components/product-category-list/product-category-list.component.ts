@@ -10,6 +10,7 @@ import { CURRENCIES_SYMBOL } from 'projects/shop-ui/src/public-api';
 export class ProductCategoryListComponent {
   @Input() title = 'Titulo de la categoria';
   @Input() productsList: Array<IProduct> = [];
+  @Input() description = '';
   @Input() selectCurrency = CURRENCIES_SYMBOL.USD;
 
   constructor() { }

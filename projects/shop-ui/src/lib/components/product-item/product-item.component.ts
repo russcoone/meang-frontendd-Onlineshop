@@ -3,7 +3,15 @@ import {
   CURRENCY_LIST,
   CURRENCIES_SYMBOL,
 } from './../../constants/currencies.enum';
-import { Component, Input, Output, EventEmitter, AfterViewChecked, ChangeDetectorRef, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewChecked,
+  ChangeDetectorRef,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'shop-product-item',
@@ -16,7 +24,7 @@ import { Component, Input, Output, EventEmitter, AfterViewChecked, ChangeDetecto
         overflow: hidden;
       }
       .product-grid {
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         text-align: center;
         position: relative;
         transition: all 0.5s ease 0s;
@@ -25,15 +33,14 @@ import { Component, Input, Output, EventEmitter, AfterViewChecked, ChangeDetecto
       }
       .product-grid:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        cursor: pointer
+        cursor: pointer;
       }
       .product-grid .product-image a {
         display: block;
       }
       .product-grid .product-image img {
         width: 100%;
-        min-height: 175px;
-        max-height: 175px;
+
         transition: all 0.5s ease 0s;
       }
       .product-grid:hover .product-image img {
@@ -137,7 +144,7 @@ import { Component, Input, Output, EventEmitter, AfterViewChecked, ChangeDetecto
         top: -30px;
       }
       .product-grid .social li a:after {
-        content: '';
+        content: "";
         height: 15px;
         width: 15px;
         border-radius: 0;
@@ -157,21 +164,17 @@ import { Component, Input, Output, EventEmitter, AfterViewChecked, ChangeDetecto
         .product-grid {
           margin-bottom: 30px;
         }
-      } 
-   
-      @media (min-width: 992px) and (max-width: 1799.98px) { 
-        .product-grid .product-image img{
-          width: 16rem
-       }
       }
- 
 
- 
-    
+      @media (min-width: 992px) and (max-width: 1799.98px) {
+        .product-grid .product-image img {
+          width: 19rem;
+        }
+      }
     `,
   ],
 })
-export class ProductItemComponent implements OnInit{
+export class ProductItemComponent implements OnInit {
   @Input() product: IProduct;
   @Input() showDesc = false;
   @Output() add: EventEmitter<IProduct> = new EventEmitter();

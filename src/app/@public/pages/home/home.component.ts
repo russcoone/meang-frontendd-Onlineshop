@@ -5,6 +5,7 @@ import { ProductsService } from '@core/services/products.service';
 import { ACTIVE_FILTERS } from '@core/constants/filter';
 import { UsersService } from '@core/services/users.service';
 import { IProduct } from 'projects/shop-ui/src/lib/interfaces/product.interface';
+import { closeAlert, loadDate } from '@shared/alerts/alerts';
 // import carouselItems from '@data/carousel.json'
 
 @Component({
@@ -21,38 +22,38 @@ export class HomeComponent implements OnInit {
   listOne;
   listTwo;
   listthree;
-  constructor(private products: ProductsService, private usersApi: UsersService) {}
+  listfour;
+  listfive;
+  loading: boolean;
+
+  constructor(private products: ProductsService) {}
 
   ngOnInit(): void {
-    this.products
-      .getByLastUnitsOffers(1, 5, ACTIVE_FILTERS.ACTIVE, true, 2000)
-      .subscribe((result) => {
-        console.log('productos a menos de 2000', result);
-        this.listTwo = result;
+    this.loading = true;
+    loadDate('Cargando datos...', 'Cargando datos...');
+    this.products.getHomePage().subscribe((data) => {
+      console.log(data);
+      this.listOne = data.tenisdemujer;
+      this.listTwo = data.tenisdehombre;
+      this.listthree = data.tenisdenino;
+      this.listfour = data.tenisdenina;
+      this.listfive = data.topPrice;
+      this.items = this.manageCarousel(data.carousel);
+      closeAlert();
+      this.loading = false;
+    });
+  }
+  private manageCarousel(list) {
+    const itemsValue: Array<ICarouselItem> = [];
+    list.shopProducts.map((item) => {
+      itemsValue.push({
+        id: item.id,
+        title: item.product.name,
+        description: item.platform.name,
+        background: item.product.img,
+        url: '',
       });
-    this.products
-      .getByPlatform(1, 3, ACTIVE_FILTERS.ACTIVE, true, '1')
-      .subscribe((result) => {
-        console.log('productos por plataforma', result);
-         this.listOne = result;
-      });
-
-      // this.items = carouselItems
-
-       this.products
-         .getByLastUnitsOffers(1, 3, ACTIVE_FILTERS.ACTIVE, false, -1 )
-         .subscribe((result: IProduct[]) => {
-          result.map((item: IProduct) => {
-             this.items.push({
-               id: item.id,
-               title: item.name,
-               description: item.description,
-               url: '',
-              background: item.img,
-
-             });
-           });
-       });
-      
+    });
+    return itemsValue;
   }
 }

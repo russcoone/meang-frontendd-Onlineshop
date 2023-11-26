@@ -71,6 +71,63 @@
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
 }
+:dark {
+  
+    --blue-50: 10 31 46;
+    --blue-100: 10 37 56;
+    --blue-200: 6 46 75;
+    --blue-300: 2 95 162;
+    --blue-400: 2 118 202;
+    --blue-500: 53 169 253;
+    --blue-600: 68 176 253;
+    --blue-700: 114 195 254;
+    --blue-800: 154 212 254;
+    --blue-900: 179 223 254;
+    --green-50: 7 39 30;
+    --green-100: 8 54 40;
+    --green-200: 10 87 65;
+    --green-300: 15 133 100;
+    --green-400: 14 170 126;
+    --green-500: 9 214 156;
+    --green-600: 60 246 194;
+    --green-700: 138 250 218;
+    --green-800: 172 251 229;
+    --green-900: 216 253 243;
+    --yellow-50: 38 30 13;
+    --yellow-100: 58 44 13;
+    --yellow-200: 69 54 23;
+    --yellow-300: 92 72 31;
+    --yellow-400: 145 115 48;
+    --yellow-500: 251 196 81;
+    --yellow-600: 255 212 117;
+    --yellow-700: 246 219 162;
+    --yellow-800: 250 237 208;
+    --yellow-900: 254 250 241;
+    --red-50: 59 27 29;
+    --red-100: 71 31 34;
+    --red-200: 92 35 39;
+    --red-300: 138 46 52;
+    --red-400: 172 57 65;
+    --red-500: 235 71 82;
+    --red-600: 240 117 125;
+    --red-700: 245 163 169;
+    --red-800: 250 209 212;
+    --red-900: 253 237 238;
+    --neutral-title: 252 253 253;
+    --neutral-text: 198 205 210;
+    --neutral-text-light: 141 155 165;
+    --neutral-text-lighter: 118 135 147;
+    --neutral-background: 13 22 28;
+    --neutral-background-medium: 17 27 34;
+    --neutral-background-strong: 27 40 50;
+    --neutral-border: 37 53 65;
+    --neutral-border-medium: 48 69 85;
+    --neutral-border-strong: 71 95 113;
+    --scrollbar-thumb: #3f474d;
+    --scrollbar-hover: #333a3f;
+    --scrollbar-track: #566169;
+  }
+
 
 *,
 *::before,
@@ -85,6 +142,7 @@
 }
 
 body {
+  
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);

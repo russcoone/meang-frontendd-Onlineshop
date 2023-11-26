@@ -1,4 +1,5 @@
 <div class="border-end" id="sidebar-wrapper">
+
   <div class="sidebar-heading border-bottom">
     <a [routerLink]="['/home']" routerLinkActive="router-link-active">
       Viky Store
@@ -7,29 +8,11 @@
   <div class="list-group list-group-flush">
     <a
       class="list-group-item list-group-item-action list-group-item p-3"
-      [routerLink]="['/admin']"
+      [routerLink]="item.url"
+      *ngFor="let item of menuItems"
       routerLinkActive="router-link-active"
-      ><i class="fa fa-columns" aria-hidden="true"></i> Dashboard</a
+      ><i class="{{item.icon}}" aria-hidden="true"></i>{{item.label}}</a
     >
-    <a
-      class="list-group-item list-group-item-action list-group-item p-3"
-      [routerLink]="['/admin/users']"
-      routerLinkActive="router-link-active"
-      ><i class="fa fa-user" aria-hidden="true"></i> Users</a
-    >
-    <a
-      class="list-group-item list-group-item-action list-group-item p-3"
-      [routerLink]="['/admin/tags']"
-      routerLinkActive="router-link-active"
-      ><i class="fa fa-tags" aria-hidden="true"></i>Tags</a
-    >
-
-    <a
-      class="list-group-item list-group-item-action list-group-item p-3"
-      [routerLink]="['/admin/genres']"
-      routerLinkActive="router-link-active"
-    >
-      <i class="fas fa-window-maximize"></i> Genres</a
     >
   </div>
 </div>

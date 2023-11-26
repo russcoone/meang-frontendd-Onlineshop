@@ -8,8 +8,14 @@
 .dropdown-item {
   cursor: pointer;
 }
-.wi {
-  color: whitesmoke !important;
+.wi{
+  color: white !important;
+  margin: 8px;
+}
+.wi:hover{
+  background-color: rgba(243, 243, 243, 0.2);
+  border-radius: 3%;
+
 }
 
 .sombra:hover {

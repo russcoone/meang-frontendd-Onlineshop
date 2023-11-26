@@ -1,3 +1,5 @@
+import { NavbarComponent } from './../../../@public/core/components/navbar/navbar.component';
+import { IMeData } from './../../../@core/interfaces/session.interface';
 import gql from 'graphql-tag';
 
 export const SHOP_PRODUCT_FRAGMENT = gql`
@@ -12,6 +14,11 @@ export const SHOP_PRODUCT_FRAGMENT = gql`
         value
         count
       }
+    }
+    platform @include(if: $showPlatform) {
+      id
+      name
+      slug
     }
   }
 `;
